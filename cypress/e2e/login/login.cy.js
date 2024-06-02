@@ -1,4 +1,7 @@
 describe('login functionality checck', () => {
+
+// adding postive and negtive test case for login page
+
   it('verfiy the login with valid data', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     cy.get('input[name ="username"]').type('Admin')
