@@ -26,7 +26,14 @@ describe("check the main menu iteam ", ()=> {
     for (let i in menu){
 
         cy.contains(menu[i]).should('be.visible').click()
+        cy.get('.oxd-topbar-header-title').invoke('text').then((headerText) => {
+            // Print the header text to the console
+            cy.log(headerText);
+
+            // Optionally, you can write this text to a file or use it in assertions
+            cy.writeFile('headerText.txt', headerText.);
         cy.screenshot(menu[i])
+        })
     }
 
 
