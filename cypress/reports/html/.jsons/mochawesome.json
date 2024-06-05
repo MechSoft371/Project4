@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-06-04T11:11:52.291Z",
+    "end": "2024-06-04T11:12:04.411Z",
+    "duration": 12120,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "52ea87fd-7b2a-4bbf-96dc-fb4ee5d34b7e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Mainmenu\\PIM.cy.js",
+      "file": "cypress\\e2e\\Mainmenu\\PIM.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "adcd2ca8-2865-4603-bb12-7dea070c0b4d",
+          "title": "Verfiy the add employee flow",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify the PIM in main menu",
+              "fullTitle": "Verfiy the add employee flow verify the PIM in main menu",
+              "timedOut": null,
+              "duration": 11961,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('web/index.php/auth/login');\ncy.get('input[name =\"username\"]').type('Admin');\ncy.get('input[name=\"password\"]').type('admin123');\ncy.get('button[type=\"submit\"]').click();\ncy.contains(\"Dashboard\").should('be.visible');\ncy.get('div.oxd-sidepanel-body').contains('PIM').click();\ncy.get('.oxd-topbar').contains('PIM').should('be.visible');\n//or\ncy.url().should(\"include\", \"/web/index.php/pim/viewEmployeeList\");\ncy.get('.orangehrm-paper-container').contains(' Add ').click();\ncy.contains('Add Employee').should('be.visible');",
+              "err": {},
+              "uuid": "f5bd4521-c092-48c5-a593-4d70eac4b6bc",
+              "parentUUID": "adcd2ca8-2865-4603-bb12-7dea070c0b4d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f5bd4521-c092-48c5-a593-4d70eac4b6bc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11961,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
