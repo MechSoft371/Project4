@@ -1,2 +1,0 @@
-AdminUser Management
-PIM

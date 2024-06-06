@@ -1,4 +1,20 @@
+const { beforeEach } = require("mocha");
+
 describe("check the main menu iteam ", ()=> {
+
+
+    beforeEach(" login to the pages", () =>{
+
+        cy.writeFile('cypress/fixtures/headerText.txt', '');
+
+        cy.visit('web/index.php/auth/login')
+    cy.get('input[name ="username"]').type('Admin')
+    cy.get('input[name="password"]').type('admin123')
+    cy.get('button[type="submit"]').click()
+
+
+        
+    })
 
     it("Verfiy the each menu iteam by click", ()=>{
 
@@ -17,14 +33,6 @@ describe("check the main menu iteam ", ()=> {
 
         }
 
-        cy.writeFile('cypress/fixtures/headerText.txt', '');
-
-        cy.visit('web/index.php/auth/login')
-    cy.get('input[name ="username"]').type('Admin')
-    cy.get('input[name="password"]').type('admin123')
-    cy.get('button[type="submit"]').click()
-    cy.contains("Dashboard").should('be.visible')
-
     for (let i in menu){
 
         cy.contains(menu[i]).should('be.visible').click()
@@ -37,27 +45,15 @@ describe("check the main menu iteam ", ()=> {
         //cy.screenshot(menu[i])
         })
     }
-
-
-
-
-
-
     })
 
     it("Verfiy the each menu iteam by click", ()=>{
 
-        cy.get('.oxd-main-menu > li')
+        cy.get('.oxd-main-menu > li').then($menuItems => {
+        const menuItems = $menuItems;
 
-        cy.writeFile('cypress/fixtures/headerText.txt', '');
-
-        cy.visit('web/index.php/auth/login')
-    cy.get('input[name ="username"]').type('Admin')
-    cy.get('input[name="password"]').type('admin123')
-    cy.get('button[type="submit"]').click()
-    cy.contains("Dashboard").should('be.visible')
-
-    for (let i in menu){
+        Cypress._.each(menuItems, $menuItem => {
+            cy.wrap($menuItem).find('a').click();
 
         cy.contains(menu[i]).should('be.visible').click()
         cy.get('.oxd-topbar-header-title').invoke('text').then((headerText) => {
@@ -68,13 +64,10 @@ describe("check the main menu iteam ", ()=> {
             cy.writeFile('cypress/fixtures/headerText.txt', headerText + '\n',{ flag: 'a+'});
         //cy.screenshot(menu[i])
         })
-    }
-
-
-
-
-
+    
+    })
 
     })
+})
 
 })
